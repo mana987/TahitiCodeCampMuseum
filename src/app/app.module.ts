@@ -10,15 +10,15 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ScanPage } from '../pages/scan/scan';
-import { SQLitePage } from '../pages/sqlite/sqlite';
 
 //native components
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { Camera } from '@ionic-native/camera';
 import { SQLite } from '@ionic-native/sqlite';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { StartPage } from '../pages/start/start';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 
 @NgModule({
@@ -29,7 +29,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     HomePage,
     TabsPage,
     ScanPage,
-    SQLitePage
+    StartPage
   ],
   imports: [
     BrowserModule,
@@ -43,14 +43,14 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     HomePage,
     TabsPage,
     ScanPage,
-    SQLitePage
+    StartPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     SQLite,
-    Camera,
     BarcodeScanner,
+    InAppBrowser,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
