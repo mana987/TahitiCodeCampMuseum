@@ -10,6 +10,7 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ScanPage } from '../pages/scan/scan';
+import { SQLitePage } from '../pages/sqlite/sqlite';
 
 //native components
 
@@ -29,7 +30,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     HomePage,
     TabsPage,
     ScanPage,
-    StartPage
+    StartPage,
+    SQLitePage
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     HomePage,
     TabsPage,
     ScanPage,
-    StartPage
+    StartPage,
+    SQLitePage
   ],
   providers: [
     StatusBar,

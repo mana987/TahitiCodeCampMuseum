@@ -12,7 +12,7 @@ import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser'
 export class ScanPage {
     result: any = {};
     options: BarcodeScannerOptions;
-    url: string ="https://facebook.com/";
+    url: string ="http://tcc.1click.pf/museum/index.php?mat=JQF1GZHZLK&oeuvre=";
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public barcodeScanner: BarcodeScanner, private iab: InAppBrowser) {
         
@@ -29,7 +29,7 @@ export class ScanPage {
             .then(res => {
                 this.result = res;
                 console.log('QR code :', this.result.text);
-                this.openWebpage(this.url);
+                this.openWebpage(this.result.text);
 
 
             })
@@ -46,8 +46,6 @@ export class ScanPage {
         const options: InAppBrowserOptions = {
             zoom: 'no',
             footer: 'yes',
-            toolbar: 'yes',
-            presentationstyle: 'formsheet',
 
         }
 
