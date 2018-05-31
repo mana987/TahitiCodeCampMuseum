@@ -48,6 +48,7 @@ export class ScanPage {
             footer: 'yes',
 
         }
+        
 
         const browser = this.iab.create(this.url + url, '_self', options);
     }
