@@ -6,10 +6,8 @@ import { MyApp } from './app.component';
 //pages
 
 import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
-import { SQLitePage } from '../pages/sqlite/sqlite';
 
 //native components
 
@@ -24,10 +22,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
   declarations: [
     MyApp,
     AboutPage,
-    ContactPage,
     HomePage,
     TabsPage,
-    SQLitePage
   ],
   imports: [
     BrowserModule,
@@ -37,10 +33,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
   entryComponents: [
     MyApp,
     AboutPage,
-    ContactPage,
     HomePage,
     TabsPage,
-    SQLitePage
   ],
   providers: [
     StatusBar,

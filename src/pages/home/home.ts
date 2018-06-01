@@ -120,5 +120,19 @@ export class HomePage {
       });
   }
 
+  // Rechercher tout les checks dans la table
+
+  public countChecked(){
+    this.db.executeSql('Select checked from `oeuvres`', {})
+      .then((check) =>{
+        console.log('check done')
+        if (check ==0){
+          this.db.executeSql(`update works_database set checked=1 where checked=0`, {})
+        } else {
+        console.log('check not done !!')
+        }
+      
+      })
+  }
 }
 

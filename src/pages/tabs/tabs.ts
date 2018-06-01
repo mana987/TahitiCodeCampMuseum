@@ -49,7 +49,7 @@ presentAlert() {
           .then(res => {
               this.result = res;
               console.log('QR code :', this.result.text);
-              this.openWebpage(this.result.text);
+              this.openWebpage;
               // if(this.result.text == 6510403686{})
 
 
@@ -70,7 +70,7 @@ presentAlert() {
       }
       
 
-      const browser = this.iab.create(this.url + url, '_blank', options);
+      const browser = this.iab.create(this.url + url, '_self', options);
   }
 
 }

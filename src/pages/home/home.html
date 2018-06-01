@@ -3,14 +3,16 @@
 <div id="custom-overlay" [style.display]="splash ? 'flex': 'none'">
   <div class="flb">
     <div class="Aligner-item Aligner-item--top"></div>
-    <img src="../../assets/imgs/logo_tcc.png">
+    <img src="../../assets/imgs/logo_tcc.png"><br>
+    <!-- <h3>Museum</h3> -->
     <div class="Aligner-item Aligner-item--bottom"></div>
   </div>
 </div>
 
 <ion-header>
-  <ion-navbar>
-    <ion-title>Liste {{countChecked}}/{{total}}</ion-title>
+  <ion-navbar class="Align-item">
+    <ion-title text-center>Tahiti code camp museum </ion-title>
+    <ion-title float-right>{{countChecked}}/{{total}}</ion-title>
 
   </ion-navbar>
 </ion-header>
@@ -26,7 +28,7 @@
       <ion-label>
         {{oeuvres.firstname}} {{oeuvres.lastname}}
         <br>
-        <p>{{oeuvres.qr_code}}</p>
+        <p>QR Code :{{oeuvres.qr_code}}</p>
       </ion-label>
       <ion-checkbox disable="false" item-end secondary ></ion-checkbox>
     </ion-item>
