@@ -54,7 +54,7 @@ export class HomePage {
   // creation de la table
 
   private createTables(): void {
-    this.db.executeSql('CREATE TABLE IF NOT EXISTS `oeuvres` ( `id` INTEGER, `lastname` TEXT, `firstname` TEXT, `checked` INTEGER DEFAULT 0, `qr_code` INTEGER, `img` INTEGER, PRIMARY KEY(`id`) )', {})
+    this.db.executeSql('CREATE TABLE IF NOT EXISTS `oeuvres` ( `id` INTEGER, `lastname` TEXT, `firstname` TEXT, `checked`, `qr_code` INTEGER, `img` INTEGER, PRIMARY KEY(`id`) )', {})
       .then(() => {
         console.log('table works created');
         this.db.executeSql('SELECT * FROM `oeuvres`', {})
@@ -75,27 +75,27 @@ export class HomePage {
   // creation des données à insérer dans le tableau
 
   private createEvent(): void {
-    this.db.executeSql("INSERT INTO `oeuvres` VALUES (1,'ALVAREZ', 'Jean-Pierre', 0, '9213750369', 'img')," +
-      "(2,'ARAI', 'Poeragni', 0, '6510403686', 'img')," +
-      "(3,'CHANSIN', 'Jerôme', 0, '7216899933', 'img')," +
-      "(4,'CHEUNG-SEN ', 'Jonas', 0, '1629568455', 'img')," +
-      "(5,'CUNNY', 'Heimana', 0, '9266553664', 'img'), " +
-      "(6,'EBB', 'Nicolas', 0, '1168085824', 'img'), " +
-      "(7,'LEHARTEL', 'Alexandre', 0, '2791010818', 'img'), " +
-      "(8,'LENOIR', 'Tetuaoro', 0, '4173047359', 'img'), " +
-      "(9,'LONGINE', 'Manaarii ', 0, '9782420312', 'img'), " +
-      "(10,'LY', 'Joane ', 0, '6872232276', 'img'), " +
-      "(11,'MARO', 'Teremu ', 0, '1234567890', 'img'), " +
-      "(12,'MONACO', 'Vaitare', 0, '4653519064', 'img'), " +
-      "(13,'PAEAHI', 'Ariipaea', 0, '3658034121', 'img'), " +
-      "(14,'PAMBRUN', 'Aito ', 0, '5175547403', 'img'), " +
-      "(15,'PAMBRUN', 'Hiomai', 0, '9520532017', 'img'), " +
-      "(16,'PEREZ', 'Rahiti', 0, '1228597258', 'img'), " +
-      "(17,'PERRY', 'Matihamu ', 0, '5480211371', 'img'), " +
-      "(18,'ROUSSEL', 'Christian ', 0, '2462643924', 'img'), " +
-      "(19,'TEHUPE', 'Tinirau ', 0, '5055364030', 'img'), " +
-      "(20,'TEMATAHOTOA', 'Tinirau ', 0, '6232447902', 'img'), " +
-      "(21,'TOOFA', 'Teparii ', 0, '4235066246', 'img');'", {})
+    this.db.executeSql("INSERT INTO `oeuvres` VALUES (1,'ALVAREZ', 'Jean-Pierre','ios-radio-button-off', '9213750369', 'img')," +
+      "(2,'ARAI', 'Poeragni','ios-radio-button-off', '6510403686', 'img')," +
+      "(3,'CHANSIN', 'Jerôme','ios-radio-button-off', '7216899933', 'img')," +
+      "(4,'CHEUNG-SEN ', 'Jonas','ios-radio-button-off', '1629568455', 'img')," +
+      "(5,'CUNNY', 'Heimana','ios-radio-button-off', '9266553664', 'img'), " +
+      "(6,'EBB', 'Nicolas','ios-radio-button-off', '1168085824', 'img'), " +
+      "(7,'LEHARTEL', 'Alexandre','ios-radio-button-off', '2791010818', 'img'), " +
+      "(8,'LENOIR', 'Tetuaoro','ios-radio-button-off', '4173047359', 'img'), " +
+      "(9,'LONGINE', 'Manaarii ','ios-radio-button-off', '9782420312', 'img'), " +
+      "(10,'LY', 'Joane ','ios-radio-button-off', '6872232276', 'img'), " +
+      "(11,'MARO', 'Teremu ','ios-radio-button-off', '1234567890', 'img'), " +
+      "(12,'MONACO', 'Vaitare','ios-radio-button-off', '4653519064', 'img'), " +
+      "(13,'PAEAHI', 'Ariipaea','ios-radio-button-off', '3658034121', 'img'), " +
+      "(14,'PAMBRUN', 'Aito ','ios-radio-button-off', '5175547403', 'img'), " +
+      "(15,'PAMBRUN', 'Hiomai','ios-radio-button-off', '9520532017', 'img'), " +
+      "(16,'PEREZ', 'Rahiti','ios-radio-button-off', '1228597258', 'img'), " +
+      "(17,'PERRY', 'Matihamu ','ios-radio-button-off', '5480211371', 'img'), " +
+      "(18,'ROUSSEL', 'Christian ','ios-radio-button-off', '2462643924', 'img'), " +
+      "(19,'TEHUPE', 'Tinirau ','ios-radio-button-off', '5055364030', 'img'), " +
+      "(20,'TEMATAHOTOA', 'Tinirau ','ios-radio-button-off', '6232447902', 'img'), " +
+      "(21,'TOOFA', 'Teparii ','ios-radio-button-off', '4235066246', 'img');'", {})
   }
 
   // lire la donnée
@@ -122,17 +122,18 @@ export class HomePage {
 
   // Rechercher tout les checks dans la table
 
-  public countChecked(){
-    this.db.executeSql('Select checked from `oeuvres`', {})
-      .then((check) =>{
-        console.log('check done')
-        if (check ==0){
-          this.db.executeSql(`update works_database set checked=1 where checked=0`, {})
-        } else {
-        console.log('check not done !!')
-        }
+  // this.db.exqsl(' select count(checked) from oeuvre where checked = [ios-checkmark-circle]')
+
+  // public countChecked(){
+  //   
+  //         this.db.executeSql(`update oeuvres set checked=[icon] where Qrcode= {{scan}}`, {})
+  //            .then
+  //         console.log('check done')
+  //      
+  //       console.log('check not done !!')
+  //       }
       
-      })
-  }
+  //     })
+  // }
 }
 
