@@ -9,7 +9,6 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
-import { ScanPage } from '../pages/scan/scan';
 import { SQLitePage } from '../pages/sqlite/sqlite';
 
 //native components
@@ -18,7 +17,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SQLite } from '@ionic-native/sqlite';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
-import { StartPage } from '../pages/start/start';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 
@@ -29,8 +27,6 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     ContactPage,
     HomePage,
     TabsPage,
-    ScanPage,
-    StartPage,
     SQLitePage
   ],
   imports: [
@@ -44,8 +40,6 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     ContactPage,
     HomePage,
     TabsPage,
-    ScanPage,
-    StartPage,
     SQLitePage
   ],
   providers: [
