@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-
-//Native Components
-
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 
 const DATABASE_WORKS: string = 'data.db';
@@ -54,7 +51,7 @@ export class HomePage {
   // creation de la table
 
   private createTables(): void {
-    this.db.executeSql('CREATE TABLE IF NOT EXISTS `oeuvres` ( `id` INTEGER, `lastname` TEXT, `firstname` TEXT, `checked`, `qr_code` INTEGER, `img` INTEGER, PRIMARY KEY(`id`) )', {})
+    this.db.executeSql('CREATE TABLE IF NOT EXISTS `oeuvres` ( `id` INTEGER, `lastname` TEXT, `firstname` TEXT, `checked` TEXT, `qr_code` INTEGER, `img` INTEGER, PRIMARY KEY(`id`) )', {})
       .then(() => {
         console.log('table works created');
         this.db.executeSql('SELECT * FROM `oeuvres`', {})
@@ -62,12 +59,11 @@ export class HomePage {
             if (table.rows.length == 21) {
 
             } else {
-              this.createEvent();
+            this.createEvent();
             }
-            this.retrieveEvent()
+            this.retrieveEvent();
           })
       })
-
       .catch(e => console.log(e, 'No Tables'));
   }
 
@@ -98,13 +94,13 @@ export class HomePage {
       "(21,'TOOFA', 'Teparii ','ios-radio-button-off', '4235066246', 'img');'", {})
   }
 
-  // lire la donnée
+  // Affiche la donnée
 
   public retrieveEvent() {
     this.db.executeSql('SELECT * FROM `oeuvres`', {})
       .then((data) => {
         console.log('data : ', data);
-        console.log(data.rows.item[2]);
+        console.log(data.rows.item[0]);
         if (data == null) {
           console.log('data null');
           return;
@@ -113,27 +109,25 @@ export class HomePage {
           console.log('data length');
           for (var i = 0; i < data.rows.length; i++) {
             this.event.push(data.rows.item(i));
-            this.total=data.rows.length;
-            console.log('for', data.rows.item(i));
+            this.total = data.rows.length;
+            console.log('for', data.rows.item(i)); 
           }
         }
       });
+    this.countChecked();
   }
 
   // Rechercher tout les checks dans la table
 
-  // this.db.exqsl(' select count(checked) from oeuvre where checked = [ios-checkmark-circle]')
+  private countChecked(): any {
+    this.db.executeSql("SELECT COUNT(checked) FROM oeuvres WHERE oeuvres.checked = [ios-checkmark-circle]", {})
+      .then((data) => {
+        console.log('count check done')
+      })
+      .catch(() => {
+        console.log('count check fail')
+      })
+  }
 
-  // public countChecked(){
-  //   
-  //         this.db.executeSql(`update oeuvres set checked=[icon] where Qrcode= {{scan}}`, {})
-  //            .then
-  //         console.log('check done')
-  //      
-  //       console.log('check not done !!')
-  //       }
-      
-  //     })
-  // }
 }
 

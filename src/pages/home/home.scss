@@ -14,7 +14,7 @@ page-home {
       }
       
       .flb {
-        background-color: white;
+        background-color: rgb(138, 6, 6);
         height:100%;
         width:100%;
         animation: pulse 1s linear forwards;
@@ -37,6 +37,6 @@ page-home {
         width: 100%;
         height: auto;
         animation: animation 3100ms linear infinite both;
-        animation-delay: 1s;
+        animation-delay: 4s;
       }
 }
