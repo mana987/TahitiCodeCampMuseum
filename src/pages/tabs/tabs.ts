@@ -16,11 +16,13 @@ export class TabsPage {
     tab1Root = HomePage;
     tab3Root = AboutPage;
 
-    result: any = {};
+    private result: any;
     options: BarcodeScannerOptions;
     optionsInapp: InAppBrowserOptions;
-    url: string = "http://tcc.1click.pf/museum/index.php?mat=111111&oeuvre=";
+    url: string = "http://tcc.1click.pf/museum/index.php?mat=JQF1GZHZLK&oeuvre=";
     private db: SQLiteObject;
+
+    // private db: SQLiteObject;
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public barcodeScanner: BarcodeScanner, private iab: InAppBrowser, private sqlite: SQLite) {
 
@@ -28,7 +30,7 @@ export class TabsPage {
 
     // Scan bar options
 
-    scan() {
+    public scan() {
         this.options = {
             // Message sur android
             prompt: 'SCANNEZ QR CODE',
@@ -42,8 +44,8 @@ export class TabsPage {
 
         this.barcodeScanner.scan(this.options)
             .then(res => {
-                this.result = res;
-                console.log('QR code :',this.result.text);
+                console.log('QR code :', this.result.text);
+                this.result = res;                
                 this.updtateChecked();
             })
             .catch(err => {
@@ -51,25 +53,27 @@ export class TabsPage {
             });
     }
 
-    updtateChecked() {
-        this.db.executeSql("UPDTATE oeuvres SET checked=[ios-checkmark-circle] where qr_code='+scan+'", {})
-          .then(() => {
-            console.log('check good')
-            this.openWebpage();
-          })
-          .catch(() => {
-            console.log('check FAIL')
-          })
-      }
-    
+    // Update checkbox
+
+    public updtateChecked() {
+        this.db.executeSql("UPDTATE `oeuvres` SET checked=[ios-checkmark-circle] where oeuvres.qr_code ="+this.result +";", {})
+            .then(() => {
+                console.log('check good')
+                this.openWebpage();
+            })
+            .catch(() => {
+                console.log('check FAIL')
+            })
+    }
+
     //Open url
 
-    openWebpage() {
+    public openWebpage() {
         this.optionsInapp = {
             zoom: 'no',
             footer: 'yes',
         };
-        this.iab.create(this.url + this.result.text, '_blank', this.options);
+        this.iab.create(this.url + this.result.text, '_system', this.options);
     }
 
 }

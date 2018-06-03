@@ -13,9 +13,11 @@ export class HomePage {
 
   public total;
   private db: SQLiteObject;
+  public count: any;
   tabBarElement: any;
   splash = true;
   event: string[] = [];
+  
 
   constructor(public navCtrl: NavController, private sqlite: SQLite) {
     this.tabBarElement = document.querySelector('.tabbar');
@@ -113,21 +115,22 @@ export class HomePage {
             console.log('for', data.rows.item(i)); 
           }
         }
+        this.countChecked();
       });
-    this.countChecked();
   }
 
   // Rechercher tout les checks dans la table
 
   private countChecked(): any {
-    this.db.executeSql("SELECT COUNT(checked) FROM oeuvres WHERE oeuvres.checked = [ios-checkmark-circle]", {})
+    this.db.executeSql("SELECT COUNT(checked) AS seenChecked FROM oeuvres WHERE checked = 'ios-checkmark-circle'", {})
       .then((data) => {
-        console.log('count check done')
+        this.count = data.rows.item(0).seenChecked;
+        console.log('count check done', data.rows.item(0).seenChecked)
       })
       .catch(() => {
         console.log('count check fail')
       })
   }
-
+    
 }
 
