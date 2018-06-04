@@ -5,7 +5,6 @@
     <div class="Aligner-item Aligner-item--top"></div>
     <img src="../../assets/imgs/Tahiti_code_camp_museum.png">
     <br>
-    <!-- <h3>Museum</h3> -->
     <div class="Aligner-item Aligner-item--bottom"></div>
   </div>
 </div>
@@ -18,8 +17,8 @@
 </ion-header>
 
 <ion-content padding>
-
-  <ion-list>
+ <!-- read list -->
+  <ion-list>  
     <ion-item *ngFor="let oeuvres of event">
 
       <ion-avatar item-start>
@@ -27,11 +26,10 @@
       </ion-avatar>
       <ion-label>
         {{oeuvres.firstname}} {{oeuvres.lastname}}
+        <ion-icon name="{{oeuvres.checked}}" float-right></ion-icon> 
         <br>
         <p>QR Code :{{oeuvres.qr_code}}</p>
-      </ion-label>
-      <!-- <ion-icon [ios-radio-button-off]= {{oeuvres.checked }}></ion-icon> -->
+      </ion-label>   
     </ion-item>
-
   </ion-list>
 </ion-content>

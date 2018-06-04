@@ -17,7 +17,6 @@ import { SQLite } from '@ionic-native/sqlite';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 
-
 @NgModule({
   declarations: [
     MyApp,
